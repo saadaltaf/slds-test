@@ -39,3 +39,12 @@ NODE_OPTIONS=--openssl-legacy-provider npm run build
 This command creates the `docs/` folder locally, but you do **not** need to
 commit it. The workflow will handle building and deploying to GitHub Pages for
 you.
+
+The GitHub Pages site is served from the `docs/` directory. The `index.html`
+file in that folder acts as a small landing page with links to the example
+pages:
+
+- `campaign-form.html` – basic campaign creation form
+- `segment-review.html` – sample supplier review table
+
+Open `index.html` after the site is deployed to navigate to these examples.
