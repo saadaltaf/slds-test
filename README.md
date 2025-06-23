@@ -2,7 +2,9 @@
 
 This repository contains a minimal Salesforce DX project with a simple Lightning Web Component. The component demonstrates basic SLDS styling and can also be built into a static site for GitHub Pages.
 
-## Getting Started
+Salesforce CLI is only required if you intend to deploy the project to a Salesforce org. Building the site for GitHub Pages can be done with just Node and `npm`.
+
+## Deploying to a Salesforce org
 
 1. Install the Salesforce CLI.
 2. Authenticate to a Salesforce org:
@@ -15,12 +17,12 @@ This repository contains a minimal Salesforce DX project with a simple Lightning
    ```
 4. Create an app page in Salesforce and add the **helloWorld** component.
 
-### Project Structure
+## Project Structure
 
 - `sfdx-project.json` – SFDX project configuration.
 - `force-app/main/default/lwc/helloWorld` – Simple **Hello World** Lightning Web Component.
 
-### GitHub Pages Deployment
+## Building for GitHub Pages
 
 The repository also includes a lightweight LWC Open Source app in the `src` folder. Use the commands below to build it to the `docs/` directory so it can be hosted using GitHub Pages:
 
