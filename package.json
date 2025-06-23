@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "lwc-services serve",
-    "build": "lwc-services build -d docs"
+    "build": "node generateSegmentPage.js \"Demo Campaign\""
   },
   "devDependencies": {
     "lwc-services": "^3.2.2"
