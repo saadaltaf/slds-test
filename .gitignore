@@ -3,3 +3,4 @@ docs/*
 !docs/segment-review.html
 !docs/campaign-form.html
 !docs/campaign-form.js
+!docs/index.html
