@@ -22,11 +22,17 @@ This repository contains a minimal Salesforce DX project with a simple Lightning
 
 ### GitHub Pages Deployment
 
-The repository also includes a lightweight LWC Open Source app in the `src` folder. Use the commands below to build it to the `docs/` directory so it can be hosted using GitHub Pages:
+The repository also includes a lightweight LWC Open Source app in the `src` folder. The `docs/` directory for GitHub Pages is generated automatically by the
+GitHub Actions workflow whenever changes are pushed to the `main` branch.
+This folder is listed in `.gitignore`.
+
+If you would like to preview the site locally, run:
 
 ```bash
 npm install
 NODE_OPTIONS=--openssl-legacy-provider npm run build
 ```
 
-Commit and push the generated `docs/` folder, then enable GitHub Pages for your repository and point it at that directory.
+This command creates the `docs/` folder locally, but you do **not** need to
+commit it. The workflow will handle building and deploying to GitHub Pages for
+you.
