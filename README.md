@@ -22,6 +22,7 @@ Salesforce CLI is only required if you intend to deploy the project to a Salesfo
 - `sfdx-project.json` – SFDX project configuration.
 - `force-app/main/default/lwc/helloWorld` – Simple **Hello World** Lightning Web Component.
 
+
 ## Building for GitHub Pages
 
 The repository also includes a lightweight LWC Open Source app in the `src` folder. The `docs/` directory for GitHub Pages is generated automatically by the
