@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "lwc-services build -d docs"
+  },
+  "devDependencies": {
+    "lwc-services": "^3.2.2"
+  }
+}
