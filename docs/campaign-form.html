@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create/Update Campaign</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/styles/salesforce-lightning-design-system.min.css">
+</head>
+<body>
+  <article class="slds-card slds-p-around_medium slds-size_1-of-1 slds-medium-size_2-of-3 slds-align_absolute-center">
+    <h1 class="slds-text-heading_medium slds-m-bottom_large">Create/Update Campaign</h1>
+    <form class="slds-form slds-form_stacked">
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label" for="campaign-name">Campaign Name</label>
+        <div class="slds-form-element__control">
+          <input id="campaign-name" type="text" class="slds-input">
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label">Query Strings (SQL)</label>
+        <div class="slds-form-element__control">
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr>
+                <th scope="col"><div class="slds-truncate">Name</div></th>
+                <th scope="col"><div class="slds-truncate">SQL</div></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="query-tbody">
+              <tr>
+                <td><input type="text" class="slds-input"></td>
+                <td><input type="text" class="slds-input"></td>
+                <td>
+                  <button type="button" class="slds-button slds-button_icon remove-row" title="Delete">
+                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                      <use href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr id="query-template" class="slds-hide">
+                <td><input type="text" class="slds-input"></td>
+                <td><input type="text" class="slds-input"></td>
+                <td>
+                  <button type="button" class="slds-button slds-button_icon remove-row" title="Delete">
+                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                      <use href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#" id="add-query" class="slds-text-link">+ Add Another Query</a>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label" for="case-subject">Case Subject Metadata</label>
+        <div class="slds-form-element__control">
+          <input id="case-subject" type="text" class="slds-input">
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label" for="case-description">Case Description</label>
+        <div class="slds-form-element__control">
+          <textarea id="case-description" class="slds-textarea" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label">Campaign Duration</label>
+        <div class="slds-form-element__control slds-grid slds-gutters_small">
+          <input type="date" class="slds-input">
+          <input type="date" class="slds-input">
+        </div>
+      </div>
+
+      <h3 class="slds-text-heading_small slds-m-vertical_medium">Campaign Specific Rules</h3>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <div class="slds-form-element__control">
+          <div class="slds-checkbox">
+            <input type="checkbox" id="dedup" checked>
+            <label class="slds-checkbox__label" for="dedup">
+              <span class="slds-checkbox_faux"></span>
+              <span class="slds-form-element__label">Enable Cross-Objectives Deduplication</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <div class="slds-form-element__control">
+          <div class="slds-checkbox">
+            <input type="checkbox" id="merge" checked>
+            <label class="slds-checkbox__label" for="merge">
+              <span class="slds-checkbox_faux"></span>
+              <span class="slds-form-element__label">Enable Intra-Objective Merge</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label">Transformation Rules</label>
+        <div class="slds-form-element__control">
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr>
+                <th scope="col"><div class="slds-truncate">Rule Name</div></th>
+                <th scope="col"><div class="slds-truncate">Config (JSON or KV)</div></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="transform-tbody">
+              <tr>
+                <td><input type="text" class="slds-input"></td>
+                <td><input type="text" class="slds-input"></td>
+                <td>
+                  <button type="button" class="slds-button slds-button_icon remove-row" title="Delete">
+                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                      <use href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr id="transform-template" class="slds-hide">
+                <td><input type="text" class="slds-input"></td>
+                <td><input type="text" class="slds-input"></td>
+                <td>
+                  <button type="button" class="slds-button slds-button_icon remove-row" title="Delete">
+                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                      <use href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#" id="add-transform" class="slds-text-link">+ Add Another Rule</a>
+        </div>
+      </div>
+
+      <h3 class="slds-text-heading_small slds-m-vertical_medium">Owner Assignment</h3>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label" for="owners-list">Owners List</label>
+        <div class="slds-form-element__control">
+          <textarea id="owners-list" class="slds-textarea" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label" for="default-owner">Default Owner</label>
+        <div class="slds-form-element__control">
+          <div class="slds-select_container">
+            <select id="default-owner" class="slds-select">
+              <option value="">— Select an Owner —</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label">Owner Assignment Rules</label>
+        <div class="slds-form-element__control">
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr>
+                <th scope="col"><div class="slds-truncate">Condition (e.g. segment = X)</div></th>
+                <th scope="col"><div class="slds-truncate">— Assign To —</div></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="owner-tbody">
+              <tr>
+                <td><input type="text" class="slds-input"></td>
+                <td><input type="text" class="slds-input"></td>
+                <td>
+                  <button type="button" class="slds-button slds-button_icon remove-row" title="Delete">
+                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                      <use href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr id="owner-template" class="slds-hide">
+                <td><input type="text" class="slds-input"></td>
+                <td><input type="text" class="slds-input"></td>
+                <td>
+                  <button type="button" class="slds-button slds-button_icon remove-row" title="Delete">
+                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                      <use href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.15.5/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#" id="add-owner" class="slds-text-link">+ Add Another Rule</a>
+        </div>
+      </div>
+
+      <div class="slds-form-element slds-m-bottom_medium">
+        <div class="slds-form-element__control">
+          <div class="slds-checkbox">
+            <input type="checkbox" id="auto-assign" checked>
+            <label class="slds-checkbox__label" for="auto-assign">
+              <span class="slds-checkbox_faux"></span>
+              <span class="slds-form-element__label">Auto-Assign Owner (requires Owner List and rules)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-grid slds-grid_align-spread slds-m-top_medium">
+        <button type="button" class="slds-button slds-button_neutral">Cancel</button>
+        <button type="submit" class="slds-button slds-button_brand">Create Campaign</button>
+      </div>
+    </form>
+  </article>
+  <script type="module" src="campaign-form.js"></script>
+</body>
+</html>

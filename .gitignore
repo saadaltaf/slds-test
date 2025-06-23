@@ -1,3 +1,5 @@
 node_modules/
 docs/*
 !docs/segment-review.html
+!docs/campaign-form.html
+!docs/campaign-form.js
