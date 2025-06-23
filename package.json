@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "lwc-services serve",
     "build": "lwc-services build -d docs"
   },
   "devDependencies": {

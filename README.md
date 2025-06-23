@@ -20,6 +20,14 @@ This repository contains a minimal Salesforce DX project with a simple Lightning
 - `sfdx-project.json` – SFDX project configuration.
 - `force-app/main/default/lwc/helloWorld` – Simple **Hello World** Lightning Web Component.
 
+### Local Development Server
+
+Run the lightweight LWC app locally using:
+
+```bash
+npm start
+```
+
 ### GitHub Pages Deployment
 
 The repository also includes a lightweight LWC Open Source app in the `src` folder. Use the commands below to build it to the `docs/` directory so it can be hosted using GitHub Pages:
